@@ -1,26 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import useThemeDetector from './hooks/useThemeDetector';
+import Sidebar from './components/Sidebar';
+import showSidebarIcon from './assets/icon-show-sidebar.svg';
+import Header from './components/Header';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+   const [theme, setTheme] = useState(useThemeDetector() ? 'dark' : 'light');
+   const [showSidebar, setShowSidebar] = useState(true);
+
+   const toggleSidebar = () => {
+      setShowSidebar((prevState) => !prevState);
+   };
+
+   const toggleTheme = () => {
+      setTheme((prevState) => {
+         if (prevState === 'light') {
+            return 'dark';
+         } else return 'light';
+      });
+   };
+
+   return (
+      <div className={`App ${showSidebar ? 'active-sidebar' : ''}`} id={theme}>
+         <Sidebar
+            theme={theme}
+            sideBarIsShown={showSidebar}
+            toggleSidebar={toggleSidebar}
+            toggleTheme={toggleTheme}
+         />
+         <Header
+            theme={theme}
+            sideBarIsShown={showSidebar}
+            toggleTheme={toggleTheme}
+         />
+         <main>
+            <div className="show-sidebar" onClick={toggleSidebar}>
+               <img src={showSidebarIcon} alt="" />
+            </div>
+         </main>
+      </div>
+   );
 }
 
 export default App;

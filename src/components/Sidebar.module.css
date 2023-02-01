@@ -1,0 +1,111 @@
+.sidebar {
+   position: absolute;
+   width: 300px;
+   left: -323px;
+   top: 0;
+   background-color: var(--bg-element);
+   display: flex;
+   flex-direction: column;
+   height: 100vh;
+   outline: 1px solid var(--clr-line);
+   padding-right: 23px;
+   color: var(--clr-medium-grey);
+   transition: 0.5s;
+}
+
+.active {
+   left: 0;
+}
+
+.logo {
+   height: 96px;
+   display: flex;
+   align-items: center;
+   margin-left: 34px;
+}
+
+.sidebar h4 {
+   margin: 15px 0 19px 32px;
+}
+
+.boards>div {
+   display: flex;
+   gap: 16px;
+   padding: 15px 0 15px 32px;
+   border-radius: 0px 100px 100px 0px;
+   cursor: pointer;
+}
+
+.boards>div.selected {
+   background-color: var(--clr-purple) !important;
+   color: white !important;
+}
+
+.new-board {
+   display: flex;
+   gap: 16px;
+   margin-top: 14px;
+   margin-left: 32px;
+   color: var(--clr-purple);
+   width: fit-content;
+   cursor: pointer;
+}
+
+.buttom {
+   margin-top: auto;
+   padding-bottom: 32px;
+}
+
+.theme {
+   display: flex;
+   gap: 15px;
+   justify-content: center;
+   align-items: center;
+   background-color: var(--bg-clr);
+   margin-left: 24px;
+   margin-bottom: 8px;
+   padding-block: 14px;
+}
+
+
+.hide-sidebar {
+   display: flex;
+   gap: 15px;
+   padding: 15px 0 15px 32px;
+   border-radius: 0px 100px 100px 0px;
+   cursor: pointer;
+}
+
+
+@media (hover: hover) and (pointer: fine) {
+
+   .boards>div:hover,
+   .hide-sidebar:hover {
+      background-color: hsla(242, 48%, 58%, 0.1);
+      color: var(--clr-purple);
+   }
+
+   .dark .boards>div:hover,
+   .dark .hide-sidebar:hover {
+      background-color: white;
+   }
+}
+
+
+@media(max-width: 800px) {
+   .sidebar {
+      width: 260px;
+      left: -280px;
+      padding-right: 20px;
+   }
+
+   .active {
+      left: 0;
+   }
+}
+
+@media (max-width: 615px) {
+   .sidebar {
+      display: none;
+   }
+}
